@@ -1,3 +1,6 @@
+#OLD VERSION, NOT RECOMMENDED TO USE
+
+
 import keyboard
 import time
 

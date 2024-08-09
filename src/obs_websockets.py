@@ -1,23 +1,23 @@
 import time
 import sys
 from obswebsocket import obsws,requests
-from websockets_auth import WEBSOCKET_HOST, WEBSOCKET_PORT, WEBSOCKET_PASSWORD
 
 #Largely Created From https://github.com/DougDougGithub/Babagaboosh
+
+WEBSOCKET_HOST = "localhost"
 
 #Manager To Interact With OBS Through an OBSWebsocket
 class OBSManager:
     ws = None
 
-    def __init__(self):
+    def __init__(self, port, password):
         #Initilization
-        self.ws = obsws(WEBSOCKET_HOST, WEBSOCKET_PORT,WEBSOCKET_PASSWORD)
+        self.ws = obsws(WEBSOCKET_HOST, port, password)
         try:
             self.ws.connect()
-        except:
+        except Exception as e:
             print("COULD NOT CONNECT TO OBS!\nDouble check that you have OBS open and that your websockets server is enabled in OBS.")
-            time.sleep(10)
-            sys.exit()
+            raise Exception("Could Not Connect To OBS")
         print("Connected to OBS Websockets!\n")
 
     def disconnect(self):
@@ -103,7 +103,7 @@ class OBSManager:
 if __name__ == '__main__':
     print("Testing OBS Websockets")
 
-    obs_manager = OBSManager()
+    obs_manager = OBSManager("4455", "Splatoon")
 
     print("Testing Scene Change")
     obs_manager.set_scene("Test")

@@ -1,3 +1,5 @@
+#OLD VERSION, NOT RECOMENDED TO USE
+
 import time
 import os
 import random
@@ -12,7 +14,7 @@ WEAPONS_PATH = "splatoon-weapon-images"
 # Sets OBS Sources to Show Picked Splatoon Weapon
 class SplatWeaponManager:
     # Manage OBS States
-    obs_manager = OBSManager()
+    obs_manager = OBSManager("4455", "Splatoon")
     visibility = None
 
     # Different Weapon Subsets
